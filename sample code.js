@@ -14,29 +14,32 @@ public class Factorial
 	}
 }
 
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Scanner;
+#include <iostream>
+using namespace std;
 
+int main() {
+    int i, n;
+    bool isPrime = true;
 
-public class URLExpSimple {
+    cout << "Enter a positive integer: ";
+    cin >> n;
 
-    
-    public static void main(String[] args) {
-        try {
-            URL mySite = new URL("http://www.cs.utexas.edu/~scottm");
-            URLConnection yc = mySite.openConnection();
-            Scanner in = new Scanner(new InputStreamReader(yc.getInputStream()));
-            int count = 0;
-            while (in.hasNext()) {
-                System.out.println(in.next());
-                count++;
+    // 0 and 1 are not prime numbers
+    if (n == 0 || n == 1) {
+        isPrime = false;
+    }
+    else {
+        for (i = 2; i <= n / 2; ++i) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
             }
-            System.out.println("Number of tokens: " + count);
-            in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
+    if (isPrime)
+        cout << n << " is a prime number";
+    else
+        cout << n << " is not a prime number";
+
+    return 0;
 }
